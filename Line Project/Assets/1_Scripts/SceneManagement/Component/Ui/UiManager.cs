@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
+    bool isSetting = false;
+
     public void OpenUI(GameObject ui)
     {
         ui.SetActive(true);
@@ -12,4 +14,13 @@ public class UiManager : MonoBehaviour
     {
         ui.SetActive(false);
     }
+    public void SettingMode(GameObject setting)
+    {
+        if (isSetting)
+            setting.SetActive(false);
+        else
+            setting.SetActive(true);
+        isSetting = isSetting ? isSetting = false : isSetting = true;
+    }
+
 }
