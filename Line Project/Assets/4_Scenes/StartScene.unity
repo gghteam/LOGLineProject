@@ -731,7 +731,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 845250155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -763,21 +763,25 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 845250158}
-  m_OnClick:
+  toggleTransition: 1
+  graphic: {fileID: 0}
+  m_Group: {fileID: 0}
+  onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1402344158}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: SettingMode
-        m_Mode: 2
+        m_MethodName: OnToggleChanged
+        m_Mode: 0
         m_Arguments:
-          m_ObjectArgument: {fileID: 2022158204}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_IsOn: 0
 --- !u!114 &845250158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab92cd7099eb6e47b773422812839d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingPanel: {fileID: 2022158205}
 --- !u!4 &1402344159
 Transform:
   m_ObjectHideFlags: 0
@@ -1217,6 +1222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f487c6be47f6f98409dbf0a6bf334aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  user:
+    gold: 0
+    best_Score: 0
 --- !u!4 &1439147021
 Transform:
   m_ObjectHideFlags: 0
@@ -1314,7 +1322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2022158205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1322,7 +1330,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022158204}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1332,10 +1340,10 @@ RectTransform:
   m_Father: {fileID: 1385471528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.6000977, y: 0.30004883}
-  m_SizeDelta: {x: 40.299927, y: 49.499756}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1400, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022158206
 MonoBehaviour:
@@ -1509,7 +1517,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2960, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
