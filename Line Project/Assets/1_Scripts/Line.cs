@@ -17,7 +17,7 @@ public class Line : MonoBehaviour
         Vector2 d = new Vector2(c, 0);
         for (int i = 0; i < 5; i++)
         {
-            var obj = Instantiate(Prefab[0], this.transform);
+            GameObject obj = Instantiate(Prefab[0], this.transform);
             obj.transform.position = d;
             if (i >= 1)
             {

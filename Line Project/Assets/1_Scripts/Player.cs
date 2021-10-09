@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public void OnclickRight()
     {
         a = this.transform.parent.GetSiblingIndex() + 1;
-        int b = this.transform.parent.parent.GetChildCount();
+        int b = this.transform.parent.parent.childCount;
         Debug.Log(a);
         Debug.Log(b);
         if (b - 1 >= a)
@@ -26,14 +26,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("¾ÈµÈ´Ù°í ¹«ÀÚ½Ä¾Æ");
+            Debug.Log("ï¿½ÈµÈ´Ù°ï¿½ ï¿½ï¿½ï¿½Ú½Ä¾ï¿½");
             return;
         }
     }
     public void OnclickLeft()
     {
         a = this.transform.parent.GetSiblingIndex() - 1;
-        int b = this.transform.parent.parent.GetChildCount();
+        int b = this.transform.parent.parent.childCount;
         Debug.Log(a);
         Debug.Log(b);
         if (0 <= a)
