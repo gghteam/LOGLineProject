@@ -2,88 +2,88 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ObjectPoolItem
+{
+    public GameObject objectToPool;
+    public int amountToPool = 2;
+    public bool shouldExpand = true;
+}
+
 public class PoolManager : MonoSingleton<PoolManager>
 {
-	[System.Serializable]
-	public class ObjectPoolItem
-	{
-
-		public GameObject objectToPool;
-		public int amountToPool = 2;
-		public bool shouldExpand = true;
-
-	}
-
-	public class ObjectPooler : MonoBehaviour
-	{
-		public List<ObjectPoolItem> itemsToPool;
+    //	public static PoolManager Instance;
+    public List<ObjectPoolItem> itemsToPool;
 
 
-		public List<List<GameObject>> pooledObjectsList;
-		public List<GameObject> pooledObjects;
-		private List<int> positions;
+    public List<List<GameObject>> pooledObjectsList;
+    public List<GameObject> pooledObjects;
+    private List<int> positions;
 
-		void Awake()
-		{
-			pooledObjectsList = new List<List<GameObject>>();
-			pooledObjects = new List<GameObject>();
-			foreach (ObjectPoolItem item in itemsToPool)
-			{
-				pooledObjects = new List<GameObject>();
-				for (int i = 0; i < item.amountToPool; i++)
-				{
-					GameObject obj = (GameObject)Instantiate(item.objectToPool);
-					obj.SetActive(false);
-					obj.transform.parent = this.transform;
-					pooledObjects.Add(obj);
-				}
-				pooledObjectsList.Add(pooledObjects);
-			}
+    void Awake()
+    {
 
-			positions = new List<int>();
-			for (int i = 0; i < pooledObjectsList.Count; i++)
-			{
-				positions.Add(0);
-			}
-		}
+        //Instance = this;
+        pooledObjectsList = new List<List<GameObject>>();
+        pooledObjects = new List<GameObject>();
+        foreach (ObjectPoolItem item in itemsToPool)
+        {
+            pooledObjects = new List<GameObject>();
+            for (int i = 0; i < item.amountToPool; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                obj.SetActive(false);
+                obj.transform.parent = this.transform;
+                pooledObjects.Add(obj);
+            }
+            pooledObjectsList.Add(pooledObjects);
+            Debug.Log(pooledObjectsList.Count);
+        }
+
+        positions = new List<int>();
+        for (int i = 0; i < pooledObjectsList.Count; i++)
+        {
+            positions.Add(0);
+        }
+    }
 
 
 
-		public GameObject GetPooledObject(int index)
-		{
+    public GameObject GetPooledObject(int index)
+    {
 
-			int curSize = pooledObjectsList[index].Count;
-			for (int i = positions[index] + 1; i < positions[index] + pooledObjectsList[index].Count; i++)
-			{
+        int curSize = pooledObjectsList[index].Count; //2°³
+        for (int i = positions[index] + 1; i < positions[index] + pooledObjectsList[index].Count; i++)
+        {
 
-				if (!pooledObjectsList[index][i % curSize].activeInHierarchy)
-				{
-					positions[index] = i % curSize;
-					return pooledObjectsList[index][i % curSize];
-				}
-			}
+            if (!pooledObjectsList[index][i % curSize].activeInHierarchy)
+            {
+                positions[index] = i % curSize;
+                return pooledObjectsList[index][i % curSize];
+            }
+        }
 
-			if (itemsToPool[index].shouldExpand)
-			{
+        if (itemsToPool[index].shouldExpand)
+        {
 
-				GameObject obj = (GameObject)Instantiate(itemsToPool[index].objectToPool);
-				obj.SetActive(false);
-				obj.transform.parent = this.transform;
-				pooledObjectsList[index].Add(obj);
-				return obj;
+            GameObject obj = (GameObject)Instantiate(itemsToPool[index].objectToPool);
+            obj.SetActive(false);
+            obj.transform.parent = this.transform;
+            pooledObjectsList[index].Add(obj);
+            Debug.Log("¤Ð");
+            return obj;
 
-			}
-			return null;
-		}
+        }
+        return null;
+    }
 
-		public List<GameObject> GetAllPooledObjects(int index)
-		{
-			return pooledObjectsList[index];
-		}
+    public List<GameObject> GetAllPooledObjects(int index)
+    {
+        return pooledObjectsList[index];
+    }
 
-		public void Despawn(GameObject target)
-		{
-			target.SetActive(false);
-		}
-	}
+    public void Despawn(GameObject target)
+    {
+        target.SetActive(false);
+    }
 }

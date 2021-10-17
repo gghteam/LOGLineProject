@@ -15,6 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
     private void Awake()
     {
+        components.Add(new UiComponent());
         SAVE_PATH = Application.dataPath + "/Save"; //모바일때는 persistenDathPath로 변환
         if(!Directory.Exists(SAVE_PATH))
         {
@@ -22,11 +23,14 @@ public class GameManager : MonoSingleton<GameManager>
         }
         LoadFromJson();
 
-        components.Add(new UiComponent());
 
         UpdateState(GameState.INIT);
 
         InvokeRepeating("SaveToJson", 0f, 60f);
+    }
+    private void Start()
+    {
+        UpdateState(GameState.INIT);
     }
 
     private void LoadFromJson()

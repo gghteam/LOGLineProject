@@ -1,45 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    public GameObject player;
+
+
+    //ÀÌ°É·Î ¶óÀÎ ¹Ù²Ù´Â°Å Á¶Á¾°¡´É(1ÀÌ¸é ÇÑÄ­ 2¸é 2Ä­¾¿)
+    [SerializeField]
+    private int changeline = 1;
+
     [SerializeField]
     private GameObject line = null;
     int a = 0;
     //int a = GameManager.Instance.line.transform.childCount;
     private void Start()
     {
-        this.transform.position = line.transform.GetChild(2).position;
-        this.transform.parent = line.transform.GetChild(2);
+        player.transform.SetParent(line.transform.GetChild(2));
+         player.transform.position = new Vector2(line.transform.GetChild(2).position.x, -4f);
+        line.transform.GetChild(2).gameObject.SetActive(true);
     }
+
+    private void Update()
+    {
+        //player.transform.position += new Vector3(0f,1f)*speed*Time.deltaTime;
+        /*if(player.transform.position.y >= line.transform.GetChild(player.transform.parent.GetSiblingIndex() + 5).transform.position.y)
+        {
+            player.transform.SetParent(line.transform.GetChild(player.transform.parent.GetSiblingIndex() + 5));
+        }*/
+        //player.transform.DOLocalMoveY(line.transform.GetChild(player.transform.parent.GetSiblingIndex()).transform.position.y, line.transform.GetChild(player.transform.parent.GetSiblingIndex() + 5).transform.position.y);
+    }
+
     public void OnclickRight()
     {
-        a = this.transform.parent.GetSiblingIndex() + 1;
-        int b = this.transform.parent.parent.childCount;
+        //Áö±Ý ÀÚ½ÅÀÌ ¸î¹øÂ° ÀÚ½ÅÀÌ ¾Ë°ÔÇØÁØ´Ù.
+        a = player.transform.parent.GetSiblingIndex() + 1;
+        int b = player.transform.parent.parent.childCount;
         Debug.Log(a);
         Debug.Log(b);
-        if (b - 1 >= a)
+        if (b - 1 >= a && a % 5 != 0)
         {
-            this.transform.position = line.transform.GetChild(a).position;
-            this.transform.parent = line.transform.GetChild(a);
+            if(line.transform.GetChild(a).gameObject.activeSelf == true)
+            {
+            player.transform.position = new Vector2(line.transform.GetChild(a).position.x,player.transform.position.y);
+            player.transform.parent = line.transform.GetChild(a);
+            }
         }
         else
         {
-            Debug.Log("ï¿½ÈµÈ´Ù°ï¿½ ï¿½ï¿½ï¿½Ú½Ä¾ï¿½");
+            Debug.Log(" ");
             return;
         }
     }
     public void OnclickLeft()
     {
-        a = this.transform.parent.GetSiblingIndex() - 1;
-        int b = this.transform.parent.parent.childCount;
+        a = player.transform.parent.GetSiblingIndex() - 1;
+        int b = player.transform.parent.parent.childCount;
         Debug.Log(a);
         Debug.Log(b);
-        if (0 <= a)
+        if (a >= 0)
         {
-            this.transform.position = line.transform.GetChild(a).position;
-            this.transform.parent = line.transform.GetChild(a);
+            if(a % 5 == 0)
+            {
+                if (line.transform.GetChild(a).gameObject.activeSelf == true)
+                {
+                    player.transform.position = new Vector2(line.transform.GetChild(a).position.x, player.transform.position.y);
+                }
+            }
+            else
+            {
+                if (line.transform.GetChild(a).gameObject.activeSelf == true)
+                {
+                    player.transform.position = new Vector2(line.transform.GetChild(a).position.x, player.transform.position.y);
+                    player.transform.parent = line.transform.GetChild(a);
+                }
+            }
         }
     }
 }
