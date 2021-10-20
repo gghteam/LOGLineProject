@@ -62,21 +62,15 @@ public class Player : MonoBehaviour
         Debug.Log(b);
         if (a >= 0)
         {
-            if(a % 5 == 0)
-            {
-                if (line.transform.GetChild(a).gameObject.activeSelf == true)
+                /*if (line.transform.GetChild(a).gameObject.activeSelf == true)
                 {
                     player.transform.position = new Vector2(line.transform.GetChild(a).position.x, player.transform.position.y);
-                }
-            }
-            else
-            {
+                }*/
                 if (line.transform.GetChild(a).gameObject.activeSelf == true)
                 {
                     player.transform.position = new Vector2(line.transform.GetChild(a).position.x, player.transform.position.y);
                     player.transform.parent = line.transform.GetChild(a);
                 }
-            }
         }
     }
 }

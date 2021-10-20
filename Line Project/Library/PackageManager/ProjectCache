@@ -1038,9 +1038,11 @@ m_PackageAssets:
         - 1.1.26
         - 1.1.27
         - 1.1.29
+        - 1.1.30
         compatible:
         - 1.1.29
-        verified: 1.1.29
+        - 1.1.30
+        verified: 1.1.30
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -3489,4 +3491,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: D:/Sorcetree/Line/Line Project/Packages
-m_EditorVersion: 2020.3.18f1 (a7d1c678663c)
+m_EditorVersion: 2020.3.19f1 (68f137dc9bbe)
