@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 469734389002818274}
   - component: {fileID: 3474112538530770483}
   - component: {fileID: 122093444181272260}
-  - component: {fileID: 1555774048678436345}
+  - component: {fileID: 2126874371801184305}
   m_Layer: 0
   m_Name: Rice_0
   m_TagString: Untagged
@@ -113,13 +113,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3412576177904431929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ec4b2fc6f4ff3e4786fbe74b8827f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &1555774048678436345
-CapsuleCollider2D:
+--- !u!60 &2126874371801184305
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,5 +132,22 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.6, y: 0.28}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6, y: 0.28}
+    newSize: {x: 0.6, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.26999998, y: 0.14}
+      - {x: -0.29999998, y: 0.06}
+      - {x: -0.29999998, y: -0.08}
+      - {x: -0.24, y: -0.14}
+      - {x: 0.24, y: -0.14}
+      - {x: 0.29999998, y: -0.089999996}
+      - {x: 0.29999998, y: 0.099999994}
+      - {x: 0.29, y: 0.14}

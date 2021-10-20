@@ -677,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &430733425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1384,7 +1384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a625b452119e34fa6c408d8fa5c742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
 --- !u!64 &1200362385
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1892,7 +1891,10 @@ MonoBehaviour:
     amountToPool: 5
     shouldExpand: 1
   - objectToPool: {fileID: 3412576177904431929, guid: 06ce44580538c8b42a129136dd8cd2dd, type: 3}
-    amountToPool: 3
+    amountToPool: 2
+    shouldExpand: 1
+  - objectToPool: {fileID: 5448897014696497908, guid: 433ab15f5a3f61b4f9c84ad99f678a19, type: 3}
+    amountToPool: 2
     shouldExpand: 1
   pooledObjects: []
 --- !u!4 &1443408381
@@ -2361,7 +2363,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &2062400441
 RectTransform:

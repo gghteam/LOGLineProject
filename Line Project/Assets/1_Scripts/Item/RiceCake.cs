@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RiceCake : DropItem
+public class RiceCake : MonoBehaviour
 {
-    private void Awake()
-    {
-        ReadyItem();
-        //PoolManager.Instance.pooledObjects[0].SetActive(true);
-    }
     private void Update()
     {
         if (gameObject.transform.position.y < -6f)
@@ -23,5 +18,4 @@ public class RiceCake : DropItem
             PoolManager.Instance.Despawn(gameObject);
         }
     }
-
 }

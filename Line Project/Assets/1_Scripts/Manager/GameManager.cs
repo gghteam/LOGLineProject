@@ -32,6 +32,8 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         UpdateState(GameState.INIT);
+        InvokeRepeating("CreateCake", 0.5f, Random.Range(0.4f, 5f));
+        InvokeRepeating("CreateStone", 0.5f, Random.Range(.4f, 5f));
     }
 
     private void LoadFromJson()
@@ -78,5 +80,40 @@ public class GameManager : MonoSingleton<GameManager>
 
     }
 
-
+    private void CreateCake()
+    {
+        GameObject cake = PoolManager.Instance.GetPooledObject(1);
+        cake.SetActive(true);
+        int line = Random.Range(0, 2);
+        switch (line)
+        {
+            case 0:
+                cake.transform.position = new Vector2(-1.4f, 6f);
+                break;
+            case 1:
+                cake.transform.position = new Vector2(0, 6f);
+                break;
+            case 2:
+                cake.transform.position = new Vector2(1.4f, 6f);
+                break;
+        }
+    }
+    private void CreateStone()
+    {
+        GameObject stone = PoolManager.Instance.GetPooledObject(2);
+        stone.SetActive(true);
+        int line = Random.Range(0, 2);
+        switch (line)
+        {
+            case 0:
+                stone.transform.position = new Vector2(-1.4f, 6f);
+                break;
+            case 1:
+                stone.transform.position = new Vector2(0, 6f);
+                break;
+            case 2:
+                stone.transform.position = new Vector2(1.4f, 6f);
+                break;
+        }
+    }
 }

@@ -34,15 +34,21 @@ public class LineComponent : Component
         {
             Vector2 d = new Vector2(-1.5f, a);
             int j = 0;
-            PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
-            PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);//0?
+            //PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
+            //PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);//0?
+            GameObject line = PoolManager.Instance.GetPooledObject(0);
+            line.transform.position = d;
+            line.SetActive(true);
             i++;
             Debug.Log(i);
             for (j = 0; j < 4;)
             {
                 d.x += 0.75f;
-                PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
-                PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);
+                // PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
+                //PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);
+                GameObject line2 = PoolManager.Instance.GetPooledObject(0);
+                line2.transform.position = d;
+                line2.SetActive(true);
                 i++;
                 j++;
                 Debug.Log(i);
