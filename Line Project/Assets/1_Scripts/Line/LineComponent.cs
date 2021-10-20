@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleComponent : Component
+public class LineComponent : Component
 {
-    List<Obstacle> obstacless = new List<Obstacle>();
+    List<Line> obstacless = new List<Line>();
 
     Vector2 defaultFloorPos = new Vector2(-1.5f, 0);
     public void UpdateState(GameState state)
@@ -12,7 +12,7 @@ public class ObstacleComponent : Component
         switch (state)
         {
             case GameState.INIT:
-                
+
                 SetLine();
                 break;
             case GameState.STANDBY:
@@ -23,7 +23,10 @@ public class ObstacleComponent : Component
                 break;
         }
     }
-
+    private void Start()
+    {
+        SetLine();
+    }
     private void SetLine()
     {
         int a = 0;
@@ -31,17 +34,17 @@ public class ObstacleComponent : Component
         {
             Vector2 d = new Vector2(-1.5f, a);
             int j = 0;
-            PoolManager.Instance.pooledObjects[i].transform.position = d;
-            PoolManager.Instance.pooledObjects[i].SetActive(true);//0?
-            i++; //1
+            PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
+            PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);//0?
+            i++;
             Debug.Log(i);
             for (j = 0; j < 4;)
             {
                 d.x += 0.75f;
-                PoolManager.Instance.pooledObjects[i].transform.position = d;
-                PoolManager.Instance.pooledObjects[i].SetActive(true);
-                j++;
+                PoolManager.Instance.pooledObjectsList[0][i].transform.position = d;
+                PoolManager.Instance.pooledObjectsList[0][i].SetActive(true);
                 i++;
+                j++;
                 Debug.Log(i);
             }
         }

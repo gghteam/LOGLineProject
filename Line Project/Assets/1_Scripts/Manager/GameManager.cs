@@ -24,7 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
         UpdateState(GameState.INIT);
-        components.Add(new ObstacleComponent());
+        components.Add(new LineComponent());
         components.Add(new UiComponent());
 
         InvokeRepeating("SaveToJson", 0f, 60f);

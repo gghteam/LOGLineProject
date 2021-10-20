@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Obstacle : MonoBehaviour
+public abstract class Line : MonoBehaviour
 {
     public abstract void Generate();
 
