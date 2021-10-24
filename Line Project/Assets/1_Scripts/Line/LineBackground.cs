@@ -17,7 +17,7 @@ public class LineBackground : Line
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position -= new Vector3(0, linespeed * Time.deltaTime, 0);
+        //this.gameObject.transform.position -= new Vector3(0, linespeed * Time.deltaTime, 0);
         render.material.mainTextureOffset = new Vector2(offset, 0);
     }
 }
