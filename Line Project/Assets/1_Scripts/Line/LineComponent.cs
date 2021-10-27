@@ -22,12 +22,13 @@ public class LineComponent : Component
     }
     private void SetLine()
     {
-        for (int i = 0; i < PoolManager.Instance.itemsToPool[0].amountToPool;)
+        for (int i = 0; i < 30;)
         {
             int j = 0;
-            GameObject C = PoolManager.Instance.GetPooledObject(0);
+            int RandomNumber = Random.Range(0, 101);
+            GameObject C = RandomNumber >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
             C.transform.position = d;
-            C.transform.SetParent(BackGround.Instance.transform);
+            C.transform.SetParent(GameManager.Instance.backGround.transform);
             C.SetActive(true);//0?
             //C.transform.SetParent()
                               //GameObject line = PoolManager.Instance.GetPooledObject(0                                                //line.transform.position = d;
@@ -37,9 +38,10 @@ public class LineComponent : Component
             for (j = 0; j < 4;)
             {
                 d.x += 0.75f;
-                GameObject b = PoolManager.Instance.GetPooledObject(0);
+                int RandomNumber2 = Random.Range(0, 101);
+                GameObject b = RandomNumber2 >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
                 b.transform.position = d;
-                b.transform.SetParent(BackGround.Instance.transform);
+                b.transform.SetParent(GameManager.Instance.backGround.transform);
                 b.SetActive(true);
                 //GameObject line2 = PoolManager.Instance.GetPooledObject(0);
                 //line2.transform.position = d;

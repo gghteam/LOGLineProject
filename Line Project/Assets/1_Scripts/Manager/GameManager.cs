@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
 {
     private GameState state; //╬ю ╩Себ
     private List<Component> components = new List<Component>();
+    public BackGround backGround { get; private set; }
 
 
     [SerializeField]
@@ -26,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
         UpdateState(GameState.INIT);
         components.Add(new LineComponent());
         components.Add(new UiComponent());
+        backGround = FindObjectOfType<BackGround>();
 
         InvokeRepeating("SaveToJson", 0f, 60f);
     }

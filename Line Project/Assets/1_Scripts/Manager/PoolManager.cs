@@ -85,5 +85,6 @@ public class PoolManager : MonoSingleton<PoolManager>
     public void Despawn(GameObject target)
     {
         target.SetActive(false);
+        target.transform.SetParent(this.transform);
     }
 }

@@ -9,8 +9,8 @@ public class SoundManager : MonoBehaviour
     private Button soundButton = null;
     private bool isSound = true;
 
-    
-    private void Update()
+
+    private void Start()
     {
         soundButton.onClick.AddListener(() => SoundOnOff());
     }
