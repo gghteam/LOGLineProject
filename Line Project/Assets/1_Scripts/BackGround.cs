@@ -38,7 +38,7 @@ public class BackGround : MonoBehaviour
             Vector3 playerposition = player.transform.position;
             player.transform.SetParent(null);
             Debug.Log("o");
-            bktransform.transform.position = new Vector3(0, -10f, 0);
+            bktransform.transform.position = new Vector2(0, -10f);
             for (int i = 20; i < 30; i++)
             {
                 Vector3 f = bktransform.transform.GetChild(i).gameObject.transform.position;
@@ -62,7 +62,7 @@ public class BackGround : MonoBehaviour
                         Debug.Log("c");
                         break;
                 }
-                player.transform.position = playerposition;
+               //player.transform.position = playerposition;
             }
         }
     }
