@@ -6,7 +6,7 @@ public class RiceCake : MonoBehaviour
 {
     private void Update()
     {
-        if (gameObject.transform.position.y < -6f)
+        if (gameObject.transform.position.y < -14f)
         {
             PoolManager.Instance.Despawn(gameObject);
         }
@@ -14,6 +14,10 @@ public class RiceCake : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag=="Player")
+        {
+            PoolManager.Instance.Despawn(gameObject);
+        }
+        else if(collision.tag=="STONE")
         {
             PoolManager.Instance.Despawn(gameObject);
         }

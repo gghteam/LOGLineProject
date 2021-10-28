@@ -6,7 +6,7 @@ public class Stone : DropItem
 {
     private void Update()
     {
-        if (gameObject.transform.position.y < -6f)
+        if (gameObject.transform.position.y < -14f)
         {
             PoolManager.Instance.Despawn(gameObject);
         }
