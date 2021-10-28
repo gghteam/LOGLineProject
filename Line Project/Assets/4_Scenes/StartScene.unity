@@ -719,7 +719,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -32768
-  m_Sprite: {fileID: 21300000, guid: aa0072b170231ae4dbe36378addbf17b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3f384e04cb858b4dbc66a8a5ba90ee4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -738,7 +738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430733424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6695.5186, z: -26343.998}
+  m_LocalPosition: {x: 0, y: 8210, z: -26343.998}
   m_LocalScale: {x: 1006.3998, y: 1124.7999, z: 295.99997}
   m_Children: []
   m_Father: {fileID: 1385471528}
@@ -873,6 +873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781873884}
   - component: {fileID: 781873885}
+  - component: {fileID: 781873886}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -945,6 +946,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &781873886
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781873883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: bec19dd2bfd41ee46b6e3117e440795c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &802470016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 1971268102711326239, guid: 486aa6384d4a5b442a6249716333a6d7, type: 3}
-    amountToPool: 30
+    amountToPool: 35
     shouldExpand: 1
   - objectToPool: {fileID: 3412576177904431929, guid: 06ce44580538c8b42a129136dd8cd2dd, type: 3}
     amountToPool: 2
@@ -1983,6 +2003,7 @@ GameObject:
   - component: {fileID: 1897812952}
   - component: {fileID: 1897812956}
   - component: {fileID: 1897812955}
+  - component: {fileID: 1897812957}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2003,10 +2024,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGameobject: {fileID: 1897812951}
+  playerAnimator: {fileID: 0}
+  headAnimator: {fileID: 781873886}
   playerPosition:
-  - {x: -1.5, y: 0, z: -1}
-  - {x: 0, y: 0, z: -1}
-  - {x: 1.5, y: 0, z: -1}
+  - {x: -1.5, y: -10.9, z: -1}
+  - {x: 0, y: -10.9, z: -1}
+  - {x: 1.5, y: -10.9, z: -1}
+  playerPositionIndex: 1
 --- !u!212 &1897812953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2066,7 +2090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897812951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.069, z: -1}
+  m_LocalPosition: {x: 0, y: -10.42, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 781873884}
@@ -2120,6 +2144,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1897812957
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897812951}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8a7e48e09acf374299594acd27fac87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2022158204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039424259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -7.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -33,7 +33,7 @@ public class BackGround : MonoBehaviour
 
     private void BackGroundCk()
     {
-        if (bktransform.transform.position.y <= -20f)
+        if (bktransform.transform.position.y <= -35f)
         {
             Vector3 playerposition = player.transform.position;
             player.transform.SetParent(null);

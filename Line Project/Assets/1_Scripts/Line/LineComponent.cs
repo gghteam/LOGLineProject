@@ -6,7 +6,7 @@ public class LineComponent : Component
 {
     List<Line> obstacless = new List<Line>();
 
-    public Vector2 d = new Vector2(-1.5f, 0);
+    public Vector2 d = new Vector2(-1.5f, -7f);
     public void UpdateState(GameState state)
     {
         switch (state)
@@ -22,7 +22,7 @@ public class LineComponent : Component
     }
     private void SetLine()
     {
-        for (int i = 0; i < 30;)
+        for (int i = 0; i < PoolManager.Instance.itemsToPool[0].amountToPool;)
         {
             int j = 0;
             int RandomNumber = Random.Range(0, 101);

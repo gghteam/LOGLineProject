@@ -7,32 +7,63 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     internal GameObject playerGameobject;
+    [SerializeField]
+    private Animator playerAnimator = null;
+    [SerializeField]
+    private Animator headAnimator = null;
 
     public List<Vector3> playerPosition = new List<Vector3>();
 
+    [SerializeField]
     private int playerPositionIndex = 1;
 
     private int playerMaxIndex;
+
+    private bool isleft = false;
     public void Start()
     {
         playerGameobject.transform.position = playerPosition[playerPositionIndex];
         playerMaxIndex = playerPosition.Count-1;
+        playerAnimator = GetComponent<Animator>();
     }
     public void OnclickRight()
     {
         if (playerPositionIndex == playerMaxIndex)
             return;
-        playerGameobject.transform.position = playerPosition[++playerPositionIndex];
+        isleft = false;
+        GetComponent<SpriteRenderer>().flipX = false;
+        playerAnimator.SetBool("isMove", true);
+        Invoke("MoveAni", 0.2f);
 
-        //GameManager.Instance.backGround.BackGroundMove();
+
+        GameManager.Instance.backGround.BackGroundMove();
     }
 
     public void OnclickLeft()
     {
         if (playerPositionIndex == 0)
             return;
-        playerGameobject.transform.position = playerPosition[--playerPositionIndex];
+        isleft = true;
+        GetComponent<SpriteRenderer>().flipX = true;
+        playerAnimator.SetBool("isMove", true);
+        Invoke("MoveAni", 0.2f);
+        GameManager.Instance.backGround.BackGroundMove();
+    }
 
-        //GameManager.Instance.backGround.BackGroundMove();
+    private void MoveAni()
+    {
+        if (!isleft)
+        {
+            if (playerPositionIndex == playerMaxIndex)
+                return;
+            playerGameobject.transform.position = playerPosition[++playerPositionIndex];
+        }
+        else if(isleft)
+        {
+            if (playerPositionIndex == 0)
+                return;
+            playerGameobject.transform.position = playerPosition[--playerPositionIndex];
+        }
+        playerAnimator.SetBool("isMove", false);
     }
 }
