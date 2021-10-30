@@ -2,57 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineComponent : Component
+public class LineComponent : MonoBehaviour
 {
-    List<Line> obstacless = new List<Line>();
-
     public Vector2 d = new Vector2(-1.5f, -7f);
-    public void UpdateState(GameState state)
+
+    float lm = -20f;
+
+    public GameObject lineobject;
+
+    private void Start()
     {
-        switch (state)
+        SetLine();
+    }
+    private void Update()
+    {
+        lineobject.transform.position -= new Vector3(0, 2 * Time.deltaTime, 0);
+        if (lineobject.transform.position.y < lm)
         {
-            case GameState.INIT:
-                SetLine();
-                break;
-            case GameState.STANDBY:
-                break;
-            case GameState.RUNNING:
-                break;
+            lineck();
+            lm += -10f;
         }
     }
     private void SetLine()
     {
-        for (int i = 0; i < PoolManager.Instance.itemsToPool[0].amountToPool;)
+        for (int i = 0; i < 20;)
         {
             int j = 0;
-            int RandomNumber = Random.Range(0, 101);
+            /*int RandomNumber = Random.Range(0, 101);
             GameObject C = RandomNumber >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
-            C.transform.position = d;
-            C.transform.SetParent(GameManager.Instance.backGround.transform);
-            C.SetActive(true);//0?
-            //C.transform.SetParent()
-                              //GameObject line = PoolManager.Instance.GetPooledObject(0                                                //line.transform.position = d;
-                              //line.SetActive(true);
+            C.transform.SetParent(lineobject.transform);
+            C.transform.localPosition = d;
+            C.SetActive(true);
             i++;
-            Debug.Log(i);
-            for (j = 0; j < 4;)
+            Debug.Log(i);*/
+            for (j = 0; j < 3;)
             {
-                d.x += 0.75f;
                 int RandomNumber2 = Random.Range(0, 101);
                 GameObject b = RandomNumber2 >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
-                b.transform.position = d;
-                b.transform.SetParent(GameManager.Instance.backGround.transform);
+                b.transform.SetParent(lineobject.transform);
+                b.transform.localPosition = d;
                 b.SetActive(true);
-                //GameObject line2 = PoolManager.Instance.GetPooledObject(0);
-                //line2.transform.position = d;
-                //line2.SetActive(true);
                 i++;
                 j++;
                 Debug.Log(i);
+                d.x += 1.5f;
             };
             d.x = -1.5f;
             d.y += 10f;
         }
     }
-
+    public void lineck()
+    {
+        for(int i = 0; i<3; i++)
+        {
+            Debug.Log(i);
+            PoolManager.Instance.Despawn(lineobject.transform.GetChild(i).gameObject);
+        }
+        for(int i = 0; i<3; i++)
+        {
+            int RandomNumber = Random.Range(0, 101);
+            GameObject C = RandomNumber >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
+            C.transform.SetParent(lineobject.transform);
+            C.SetActive(true);
+            C.transform.localPosition = d;
+            d.x += 1.5f;
+        }
+        d.x = -1.5f;
+        d.y += 10f;
+        Debug.Log("o");
+    }
 }

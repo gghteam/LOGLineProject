@@ -9,6 +9,10 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private RectTransform settingPanel;
 
+
+    public void Update()
+    {
+    }
     public void OpenUI(GameObject ui)
     {
         ui.SetActive(true);
