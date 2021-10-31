@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 2022158205}
+  linestop: 0
 --- !u!4 &1402344159
 Transform:
   m_ObjectHideFlags: 0

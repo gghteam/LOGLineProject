@@ -9,10 +9,8 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private RectTransform settingPanel;
 
+    public bool linestop = false;
 
-    public void Update()
-    {
-    }
     public void OpenUI(GameObject ui)
     {
         ui.SetActive(true);
@@ -34,7 +32,11 @@ public class UiManager : MonoBehaviour
 
     public void OnToggleChanged(bool isOn)
     {
-        settingPanel.DOAnchorPosX(isOn ? 0f : 1400f, 0.2f).SetEase(Ease.InCirc);
+        if(isOn == false) { Time.timeScale = 1;}
+        settingPanel.DOAnchorPosX(isOn ? 0f : 1400f, 0.2f).SetEase(Ease.InCirc).OnComplete(() =>
+        {
+            if (isOn) { Time.timeScale = 0; }
+        });
         Debug.Log("ch");
     }
 }
