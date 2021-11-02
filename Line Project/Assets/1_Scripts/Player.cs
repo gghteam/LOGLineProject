@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Animator playerAnimator = null;
     [SerializeField]
     private Animator headAnimator = null;
+    [SerializeField]
+    private GameObject tiger = null;
 
     public List<Vector3> playerPosition = new List<Vector3>();
 
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
     private int playerPositionIndex = 1;
 
     private int playerMaxIndex;
+
 
     private bool isleft = false;
     public void Start()
@@ -64,6 +67,7 @@ public class Player : MonoBehaviour
                 return;
             playerGameobject.transform.position = playerPosition[--playerPositionIndex];
         }
+        tiger.transform.position = new Vector3(playerPosition[playerPositionIndex].x, tiger.transform.position.y, tiger.transform.position.z);
         playerAnimator.SetBool("isMove", false);
     }
 }

@@ -15,6 +15,7 @@ public class RiceCake : MonoBehaviour
     {
         if(collision.tag=="Player")
         {
+            GameManager.Instance.AddScore();
             PoolManager.Instance.Despawn(gameObject);
         }
         else if(collision.tag=="STONE")

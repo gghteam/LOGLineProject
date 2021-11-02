@@ -10,12 +10,16 @@ public class GameManager : MonoSingleton<GameManager>
     public BackGround backGround { get; private set; }
     public UiManager uiManager { get; private set; }
 
+    public Tiger tiger { get; private set; }
     public LineComponent lineComponent { get; private set; }
 
     [SerializeField]
     private User user;
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
+ 
+    public int score { get; private set; }
+    private bool isCatch = false;
     private void Awake()
     {
         SAVE_PATH = Application.dataPath + "/Save"; //모바일때는 persistenDathPath로 변환
@@ -31,6 +35,8 @@ public class GameManager : MonoSingleton<GameManager>
         backGround = FindObjectOfType<BackGround>();
         lineComponent = FindObjectOfType<LineComponent>();
         uiManager = FindObjectOfType<UiManager>();
+        tiger = FindObjectOfType<Tiger>();
+        score = 0;
 
         InvokeRepeating("SaveToJson", 0f, 60f);
     }
@@ -39,6 +45,7 @@ public class GameManager : MonoSingleton<GameManager>
         UpdateState(GameState.INIT);
         InvokeRepeating("CreateCake", 0.5f, Random.Range(0.4f, 5f));
         InvokeRepeating("CreateStone", 0.5f, Random.Range(.4f, 5f));
+        InvokeRepeating("TimeAddScore", 5f, 5f);
     }
 
     private void LoadFromJson()
@@ -120,5 +127,43 @@ public class GameManager : MonoSingleton<GameManager>
                 stone.transform.position = new Vector2(1.4f, 6f);
                 break;
         }
+    }
+
+    public void AddScore()
+    {
+        score += 100;
+        uiManager.UpdateUI();
+    }
+
+    private void TimeAddScore()
+    {
+        score += 10;
+        uiManager.UpdateUI();
+    }
+
+    public void Judgment()
+    {
+        if(!isCatch)
+        {
+            isCatch = true;
+            tiger.Up();
+            StartCoroutine(Timer());
+        }
+        else if(isCatch)
+        {
+            //TODO Die;
+        }
+    }
+
+    private IEnumerator Timer()
+    {
+        int i = 20;
+        while(i > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            i--;
+        }
+        isCatch = false;
+        tiger.Down();
     }
 }

@@ -46,6 +46,9 @@ TagManager:
   - name: Player
     uniqueID: 2854210029
     locked: 0
+  - name: Tiger
+    uniqueID: 3363842535
+    locked: 0
   - name: Line
     uniqueID: 943751229
     locked: 0

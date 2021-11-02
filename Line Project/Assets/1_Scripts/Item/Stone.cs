@@ -17,6 +17,7 @@ public class Stone : DropItem
         {
             Debug.Log("돌");
             //호랑이따라오기
+            GameManager.Instance.Judgment();
         }
     }
  
