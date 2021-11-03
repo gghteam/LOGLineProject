@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private bool isCatch = false;
     private void Awake()
     {
+        Screen.SetResolution(1440, 2960, false);
         Instance = this;
         backGround = FindObjectOfType<BackGround>();
         lineComponent = FindObjectOfType<LineComponent>();
@@ -39,9 +40,9 @@ public class GameManager : MonoBehaviour
         }
         else if(isCatch)
         {
-            EndGame();
+            tiger.End();
+            Invoke("Fun", 0.5f);
             PlayerPrefs.SetInt("SCORE", score);
-            SceneManager.LoadScene("GameOverScene");
         }
     }
     void Start()
@@ -116,5 +117,11 @@ public class GameManager : MonoBehaviour
         }
         isCatch = false;
         tiger.Down();
+    }
+
+    public void Fun()
+    {
+        EndGame();
+        SceneManager.LoadScene("GameOverScene");
     }
 }

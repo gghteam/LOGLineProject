@@ -17,6 +17,6 @@ public class Tiger : MonoBehaviour
 
     public void End()
     {
-       // transform.DOMove(new Vector3(0,-7,-1))
+        transform.DOMove(new Vector3(0, -7, -1), 0.5f);
     }
 }

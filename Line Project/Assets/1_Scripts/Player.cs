@@ -40,12 +40,15 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("?");
-        GameManager.Instance.CancelInvoke("CreateCake");
-        GameManager.Instance.CancelInvoke("CreateStone");
-        GameManager.Instance.CancelInvoke("TimeAddScore");
+        Debug.Log("fall");
+     //   GameManager.Instance.CancelInvoke("CreateCake");
+      //  GameManager.Instance.CancelInvoke("CreateStone");
+       // GameManager.Instance.CancelInvoke("TimeAddScore");
         PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
-        SceneManager.LoadScene("GameOverScene");
+        playerAnimator.SetBool("isDie", true);
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.DOMoveY(-19, 2f);
+        GameManager.Instance.Invoke("Fun", 2f);
     }
     public void OnclickRight()
     {
