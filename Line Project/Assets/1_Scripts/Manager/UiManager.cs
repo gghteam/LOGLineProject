@@ -12,6 +12,9 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private Text myScore = null;
 
+    [SerializeField]
+    private Text time = null;
+
     public bool linestop = false;
 
     //public void OpenUI(GameObject ui)
@@ -35,10 +38,11 @@ public class UiManager : MonoBehaviour
 
     public void OnToggleChanged(bool isOn)
     {
-        if(isOn == false) { Time.timeScale = 1;}
+        if(isOn == false) { StartCoroutine(Timer()); }
         settingPanel.DOAnchorPosX(isOn ? 0f : 1400f, 0.2f).SetEase(Ease.InCirc).OnComplete(() =>
         {
-            if (isOn) { Time.timeScale = 0; }
+            if (isOn) { 
+                Time.timeScale = 0; }
         });
         Debug.Log("ch");
     }
@@ -46,5 +50,16 @@ public class UiManager : MonoBehaviour
     public void UpdateUI()
     {
         myScore.text = string.Format("Score\n{0}", GameManager.Instance.score);
+    }
+
+    private IEnumerator Timer()
+    {
+        for(int i = 3; i > 0; i--)
+        {
+            time.text = string.Format("{0}",i);
+            yield return new WaitForSecondsRealtime(1f);
+        }
+        time.text = "";
+        Time.timeScale = 1;
     }
 }

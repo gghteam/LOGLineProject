@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.CancelInvoke("CreateCake");
         GameManager.Instance.CancelInvoke("CreateStone");
         GameManager.Instance.CancelInvoke("TimeAddScore");
+        PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
         SceneManager.LoadScene("GameOverScene");
     }
     public void OnclickRight()

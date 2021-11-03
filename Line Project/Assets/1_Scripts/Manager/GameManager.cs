@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
         }
         else if(isCatch)
         {
-            GameManager.Instance.EndGame();
+            EndGame();
+            PlayerPrefs.SetInt("SCORE", score);
             SceneManager.LoadScene("GameOverScene");
         }
     }
