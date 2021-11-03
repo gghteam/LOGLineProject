@@ -30,12 +30,13 @@ public class Player : MonoBehaviour
         playerMaxIndex = playerPosition.Count-1;
         playerAnimator = GetComponent<Animator>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "CutLine")
-        {
+            if (collision.tag == "CutLine")
+            {
             Die();
-        }
+            }
     }
     private void Die()
     {
@@ -51,9 +52,11 @@ public class Player : MonoBehaviour
             return;
         isleft = false;
         GetComponent<SpriteRenderer>().flipX = false;
+        tiger.GetComponent<SpriteRenderer>().flipX = false;
         SoundManager.Instance.OnSound(2, 1);
         playerAnimator.SetBool("isMove", true);
-        Invoke("MoveAni", 0.2f);
+        tiger.GetComponent<Animator>().SetBool("isMove", true);
+        Invoke("MoveAni", 0.3f);
 
 
         GameManager.Instance.backGround.BackGroundMove();
@@ -65,9 +68,11 @@ public class Player : MonoBehaviour
             return;
         isleft = true;
         GetComponent<SpriteRenderer>().flipX = true;
+        tiger.GetComponent<SpriteRenderer>().flipX = true;
         SoundManager.Instance.OnSound(2, 1);
         playerAnimator.SetBool("isMove", true);
-        Invoke("MoveAni", 0.2f);
+        tiger.GetComponent<Animator>().SetBool("isMove", true);
+        Invoke("MoveAni", 0.3f);
         GameManager.Instance.backGround.BackGroundMove();
     }
 
@@ -87,5 +92,6 @@ public class Player : MonoBehaviour
         }
         tiger.transform.position = new Vector3(playerPosition[playerPositionIndex].x, tiger.transform.position.y, tiger.transform.position.z);
         playerAnimator.SetBool("isMove", false);
+        tiger.GetComponent<Animator>().SetBool("isMove", false);
     }
 }

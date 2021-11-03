@@ -30,7 +30,7 @@ public class LineComponent : MonoBehaviour
             int j = 0;
             for (j = 0; j < 3;)
             {
-                if (i<6)
+                if (i<9)
                 {
                     GameObject c = PoolManager.Instance.GetPooledObject(0);
                     c.transform.SetParent(lineobject.transform);

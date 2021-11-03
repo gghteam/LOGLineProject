@@ -18,10 +18,8 @@ public class Stone : DropItem
         {
             Debug.Log("돌");
             //호랑이따라오기
-            GameManager.Instance.EndGame();
-            SceneManager.LoadScene("GameOverScene");
-            SoundManager.Instance.OnSound(1, 0);
             GameManager.Instance.Judgment();
+            SoundManager.Instance.OnSound(1, 0);
         }
     }
  

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class GameManager : MonoBehaviour
         }
         else if(isCatch)
         {
-            //TODO Die;
+            GameManager.Instance.EndGame();
+            SceneManager.LoadScene("GameOverScene");
         }
     }
     void Start()
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void CreateCake()
     {
+        Debug.Log("Hi");
         GameObject cake = PoolManager.Instance.GetPooledObject(1);
         cake.SetActive(true);
         int line = Random.Range(0, 2);
