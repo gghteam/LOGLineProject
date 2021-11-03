@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class GameOverScreen : MonoBehaviour
 {
     [SerializeField]
-    Button button;
+    Button startButton;
+    [SerializeField]
+    Button retryButton;
     private void Awake()
     {
-        button.onClick.AddListener(() => SceneManager.LoadScene("MainStartScene"));
+        startButton.onClick.AddListener(() => SceneManager.LoadScene("MainStartScene"));
+        retryButton.onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
     }
 }

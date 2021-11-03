@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
             return;
         isleft = false;
         GetComponent<SpriteRenderer>().flipX = false;
+        SoundManager.Instance.OnSound(2, 1);
         playerAnimator.SetBool("isMove", true);
         Invoke("MoveAni", 0.2f);
 
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
             return;
         isleft = true;
         GetComponent<SpriteRenderer>().flipX = true;
+        SoundManager.Instance.OnSound(2, 1);
         playerAnimator.SetBool("isMove", true);
         Invoke("MoveAni", 0.2f);
         GameManager.Instance.backGround.BackGroundMove();
