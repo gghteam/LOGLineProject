@@ -14,14 +14,14 @@ public class UiManager : MonoBehaviour
 
     public bool linestop = false;
 
-    public void OpenUI(GameObject ui)
-    {
-        ui.SetActive(true);
-    }
-    public void CloseUI(GameObject ui)
-    {
-        ui.SetActive(false);
-    }
+    //public void OpenUI(GameObject ui)
+    //{
+    //    ui.SetActive(true);
+    //}
+    //public void CloseUI(GameObject ui)
+    //{
+    //    ui.SetActive(false);
+    //}
     /*
     public void SettingMode(GameObject setting)
     {
