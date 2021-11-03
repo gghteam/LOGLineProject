@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Player : MonoBehaviour
@@ -28,6 +29,21 @@ public class Player : MonoBehaviour
         playerGameobject.transform.position = playerPosition[playerPositionIndex];
         playerMaxIndex = playerPosition.Count-1;
         playerAnimator = GetComponent<Animator>();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "CutLine")
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Debug.Log("?");
+        GameManager.Instance.CancelInvoke("CreateCake");
+        GameManager.Instance.CancelInvoke("CreateStone");
+        GameManager.Instance.CancelInvoke("TimeAddScore");
+        SceneManager.LoadScene("GameOverScene");
     }
     public void OnclickRight()
     {
