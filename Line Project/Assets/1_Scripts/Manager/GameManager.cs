@@ -3,94 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
-    private GameState state; //씬 상태
-    private List<Component> components = new List<Component>();
+    public static GameManager Instance;
+    //private GameState state; //씬 상태
+    //private List<Component> components = new List<Component>();
     public BackGround backGround { get; private set; }
-    public UiManager uiManager { get; private set; }
 
+    public int score { get; private set; }
     public Tiger tiger { get; private set; }
     public LineComponent lineComponent { get; private set; }
+    public UiManager uiManager { get; private set; }
 
-    [SerializeField]
-    private User user;
-    private string SAVE_PATH = "";
-    private readonly string SAVE_FILENAME = "/SaveFile.txt";
- 
-    public int score { get; private set; }
     private bool isCatch = false;
     private void Awake()
     {
-        SAVE_PATH = Application.dataPath + "/Save"; //모바일때는 persistenDathPath로 변환
-        if(!Directory.Exists(SAVE_PATH))
-        {
-            Directory.CreateDirectory(SAVE_PATH);
-        }
-        LoadFromJson();
-
-
-        UpdateState(GameState.INIT);
-        components.Add(new UiComponent());
+        Instance = this;
         backGround = FindObjectOfType<BackGround>();
         lineComponent = FindObjectOfType<LineComponent>();
         uiManager = FindObjectOfType<UiManager>();
         tiger = FindObjectOfType<Tiger>();
-        score = 0;
 
-        InvokeRepeating("SaveToJson", 0f, 60f);
+        
+        score = 0;
     }
-    private void Start()
+
+    public void Judgment()
     {
-        UpdateState(GameState.INIT);
+        if(!isCatch)
+        {
+            isCatch = true;
+            tiger.Up();
+            StartCoroutine(Timer());
+        }
+        else if(isCatch)
+        {
+            //TODO Die;
+        }
+    }
+    void Start()
+    {
         InvokeRepeating("CreateCake", 0.5f, Random.Range(0.4f, 5f));
         InvokeRepeating("CreateStone", 0.5f, Random.Range(.4f, 5f));
         InvokeRepeating("TimeAddScore", 5f, 5f);
     }
 
-    private void LoadFromJson()
-    {
-        string json = "";
 
-        if(File.Exists(SAVE_PATH + SAVE_FILENAME))
-        {
-            json = File.ReadAllText(SAVE_PATH + SAVE_FILENAME);
-            user = JsonUtility.FromJson<User>(json);
-        }
-        else
-        {
-            SaveToJson();
-            LoadFromJson();
-        }
-    }
-    private void SaveToJson()
-    {
-        SAVE_PATH = Application.dataPath + "/Save";
-        if (user == null) return;
-        string json = JsonUtility.ToJson(user, true);
-        File.WriteAllText(SAVE_PATH + SAVE_FILENAME, json, System.Text.Encoding.UTF8);
-    }
-    private void OnApplicationPause(bool pause)
-    {
-        SaveToJson();
-    }
-    private void OnApplicationQuit()
-    {
-        SaveToJson();
-    }
-    public void UpdateState(GameState state)
-    {
-        //상태 변경
-        this.state = state;
-
-        for (int i = 0; i < components.Count; i++)
-        {
-            components[i].UpdateState(state);
-        }
-        if (state == GameState.INIT)
-            UpdateState(GameState.STANDBY);
-
-    }
 
     private void CreateCake()
     {
@@ -110,6 +68,12 @@ public class GameManager : MonoSingleton<GameManager>
                 break;
         }
     }
+    public void EndGame()
+    {
+        CancelInvoke("CreateCake");
+        CancelInvoke("CreateStone");
+        CancelInvoke("TimeAddScore");
+    }
     private void CreateStone()
     {
         GameObject stone = PoolManager.Instance.GetPooledObject(2);
@@ -128,33 +92,16 @@ public class GameManager : MonoSingleton<GameManager>
                 break;
         }
     }
-
-    public void AddScore()
-    {
-        score += 100;
-        uiManager.UpdateUI();
-    }
-
     private void TimeAddScore()
     {
         score += 10;
         uiManager.UpdateUI();
     }
-
-    public void Judgment()
+    public void AddScore()
     {
-        if(!isCatch)
-        {
-            isCatch = true;
-            tiger.Up();
-            StartCoroutine(Timer());
-        }
-        else if(isCatch)
-        {
-            //TODO Die;
-        }
+        score += 100;
+        uiManager.UpdateUI();
     }
-
     private IEnumerator Timer()
     {
         int i = 20;

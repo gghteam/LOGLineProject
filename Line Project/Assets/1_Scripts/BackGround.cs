@@ -33,9 +33,9 @@ public class BackGround : MonoBehaviour
 
     private void BackGroundCk()
     {
-        if (bktransform.transform.position.y <= -35f)
+        if (bktransform.transform.position.y <= -43f)
         {
-            bktransform.transform.position = new Vector2(0, -13f);
+            bktransform.transform.position = new Vector2(0, -7f);
         }
     }
 }

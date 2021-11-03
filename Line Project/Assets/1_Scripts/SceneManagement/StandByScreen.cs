@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class StandByScreen : UiScreen
+public class StandByScreen : MonoBehaviour
 {
-    public override void UpdateScreenStatus(bool open)
+    [SerializeField]
+    Button button;
+    private void Awake()
     {
-        Debug.Log("stand");
-        base.UpdateScreenStatus(open);
+        button.onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
     }
 }

@@ -10,8 +10,9 @@ public class ObjectPoolItem
     public bool shouldExpand = true;
 }
 
-public class PoolManager : MonoSingleton<PoolManager>
+public class PoolManager : MonoBehaviour
 {
+    public static PoolManager Instance;
     //	public static PoolManager Instance;
     public List<ObjectPoolItem> itemsToPool;
 
@@ -23,7 +24,7 @@ public class PoolManager : MonoSingleton<PoolManager>
     void Awake()
     {
 
-        //Instance = this;
+        Instance = this;
         pooledObjectsList = new List<List<GameObject>>();
         pooledObjects = new List<GameObject>();
         foreach (ObjectPoolItem item in itemsToPool)

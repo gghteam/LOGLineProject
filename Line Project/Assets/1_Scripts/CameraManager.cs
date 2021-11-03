@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoSingleton<CameraManager>
+public class CameraManager : MonoBehaviour
 {
+    public static CameraManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     [SerializeField]
     Camera selectedCamera;
     public bool CheckObjectIsInCamera(GameObject _target)

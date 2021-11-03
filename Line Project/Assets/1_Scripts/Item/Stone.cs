@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stone : DropItem
 {
@@ -17,6 +18,8 @@ public class Stone : DropItem
         {
             Debug.Log("돌");
             //호랑이따라오기
+            GameManager.Instance.EndGame();
+            SceneManager.LoadScene("GameOverScene");
             GameManager.Instance.Judgment();
         }
     }
