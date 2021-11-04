@@ -30,7 +30,7 @@ public class GameOverScreen : MonoBehaviour
     }
     void CheckSound()
     {
-        if(PlayerPrefs.GetInt("BGM")== 0)
+        if(PlayerPrefs.GetInt("BGM",1)== 0)
         {
             audio.volume = 0;
         }
