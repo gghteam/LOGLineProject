@@ -28,9 +28,10 @@ public class LineComponent : MonoBehaviour
         for (int i = 0; i < 20;)
         {
             int j = 0;
+            int count = 0;
             for (j = 0; j < 3;)
             {
-                if (i<9)
+                if (i < 9)
                 {
                     GameObject c = PoolManager.Instance.GetPooledObject(0);
                     c.transform.SetParent(lineobject.transform);
@@ -43,14 +44,43 @@ public class LineComponent : MonoBehaviour
                 else
                 {
                     int RandomNumber2 = Random.Range(0, 101);
-                    GameObject b = RandomNumber2 >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
-                    b.transform.SetParent(lineobject.transform);
-                    b.transform.localPosition = d;
-                    b.SetActive(true);
-                    i++;
-                    j++;
-                    Debug.Log(i);
-                    d.x += 1.5f;
+                    if (RandomNumber2 >= 80)
+                    {
+                        if (count < 1)
+                        {
+                            GameObject e = PoolManager.Instance.GetPooledObject(3);
+                            e.transform.SetParent(lineobject.transform);
+                            e.transform.localPosition = d;
+                            e.SetActive(true);
+                            i++;
+                            j++;
+                            Debug.Log(i);
+                            d.x += 1.5f;
+                            count++;
+                        }
+                        else
+                        {
+                            GameObject b = PoolManager.Instance.GetPooledObject(0);
+                            b.transform.SetParent(lineobject.transform);
+                            b.transform.localPosition = d;
+                            b.SetActive(true);
+                            i++;
+                            j++;
+                            Debug.Log(i);
+                            d.x += 1.5f;
+                        }
+                    }
+                    else
+                    {
+                        GameObject e = PoolManager.Instance.GetPooledObject(0);
+                        e.transform.SetParent(lineobject.transform);
+                        e.transform.localPosition = d;
+                        e.SetActive(true);
+                        i++;
+                        j++;
+                        Debug.Log(i);
+                        d.x += 1.5f;
+                    }
                 }
             }
             d.x = -1.5f;
@@ -64,14 +94,41 @@ public class LineComponent : MonoBehaviour
             Debug.Log(i);
             PoolManager.Instance.Despawn(lineobject.transform.GetChild(i).gameObject);
         }
+        int count = 0;
         for (int i = 0; i < 3; i++)
         {
-            int RandomNumber = Random.Range(0, 101);
-            GameObject C = RandomNumber >= 80 ? PoolManager.Instance.GetPooledObject(3) : PoolManager.Instance.GetPooledObject(0);
-            C.transform.SetParent(lineobject.transform);
-            C.SetActive(true);
-            C.transform.localPosition = d;
-            d.x += 1.5f;
+            int RandomNumber2 = Random.Range(0, 101);
+            if (RandomNumber2 >= 80)
+            {
+                if (count < 1)
+                {
+                    GameObject e = PoolManager.Instance.GetPooledObject(3);
+                    e.transform.SetParent(lineobject.transform);
+                    e.transform.localPosition = d;
+                    e.SetActive(true);
+                    Debug.Log(i);
+                    d.x += 1.5f;
+                    count++;
+                }
+                else
+                {
+                    GameObject b = PoolManager.Instance.GetPooledObject(0);
+                    b.transform.SetParent(lineobject.transform);
+                    b.transform.localPosition = d;
+                    b.SetActive(true);
+                    Debug.Log(i);
+                    d.x += 1.5f;
+                }
+            }
+            else
+            {
+                GameObject e = PoolManager.Instance.GetPooledObject(0);
+                e.transform.SetParent(lineobject.transform);
+                e.transform.localPosition = d;
+                e.SetActive(true);
+                Debug.Log(i);
+                d.x += 1.5f;
+            }
         }
         d.x = -1.5f;
         d.y += 10f;
