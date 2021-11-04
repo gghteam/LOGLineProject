@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
 
     private bool isCatch = false;
 
-    
+    private float time = 0;
+    public int mode { get; private set; }
+    //mode0:0.2 mode1:0.3, mode2:0.4
+
     private void Awake()
     {
         Screen.SetResolution(1440, 2960, false);
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UiManager>();
         tiger = FindObjectOfType<Tiger>();
 
-        
+        mode = 0;
         score = 0;
     }
 
@@ -54,7 +57,20 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("TimeAddScore", 5f, 5f);
     }
 
-
+    private void Update()
+    {
+        if (mode < 2)
+        {
+            time += Time.deltaTime;
+            Debug.Log(time);
+            if (time >= 20)
+            {
+                mode++;
+                time = 0;
+            }
+        }
+        
+    }
 
     private void CreateCake()
     {

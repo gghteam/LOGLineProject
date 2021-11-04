@@ -21,6 +21,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -369,7 +370,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 8a10d1fc6029b3f51d0abc87582fa9fd
+      Hash: aad9ed7aae0ab7bbeaf283b844c1e37e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StandByScreen
@@ -906,4 +907,4 @@ ScriptsOnlyBuild:
   - Assets/4_Scenes/MainStartScene.unity
   - Assets/4_Scenes/StartScene.unity
   - Assets/4_Scenes/GameOverScene.unity
-  playerPath: C:/Users/USER/Desktop/Project/Line/Line.apk
+  playerPath: C:/Users/USER/Desktop/build/Tiger_Up2.apk

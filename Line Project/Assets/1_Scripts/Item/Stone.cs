@@ -5,6 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Stone : DropItem
 {
+
+    private void Start()
+    {
+        switch(GameManager.Instance.mode)
+        {
+            case 0:
+                transform.GetComponent<Rigidbody2D>().gravityScale = 0.2f;
+                break;
+            case 1:
+                transform.GetComponent<Rigidbody2D>().gravityScale = 0.3f;
+                break;
+            case 2:
+                transform.GetComponent<Rigidbody2D>().gravityScale = 0.4f;
+                break;
+        }
+    }
     private void Update()
     {
         if (gameObject.transform.position.y < -14f)

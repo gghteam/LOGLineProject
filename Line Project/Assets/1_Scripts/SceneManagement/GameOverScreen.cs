@@ -17,6 +17,7 @@ public class GameOverScreen : MonoBehaviour
     private AudioSource audio;
     private void Awake()
     {
+        Screen.SetResolution(1440, 2960, false);
         CheckBest();
         scoreText.text = string.Format("{0}", PlayerPrefs.GetInt("SCORE", 0));
         startButton.onClick.AddListener(() => SceneManager.LoadScene("MainStartScene"));

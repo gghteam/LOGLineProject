@@ -11,6 +11,7 @@ public class StandByScreen : MonoBehaviour
     
     private void Awake()
     {
+        Screen.SetResolution(1440, 2960, false);
         button[0].onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
         button[1].onClick.AddListener(() => Quit());
     }
