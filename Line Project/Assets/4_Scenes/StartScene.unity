@@ -751,15 +751,14 @@ MonoBehaviour:
   soundButton:
   - {fileID: 1495942993}
   - {fileID: 1910694714}
-  - {fileID: 1818378336}
   audioClip:
   - {fileID: 8300000, guid: 9092d8cf9afcbc3459f55b89cbfd7771, type: 3}
   - {fileID: 8300000, guid: 4d929f49315842244897f34577b8a7cc, type: 3}
   audioSource:
   - {fileID: 253951797}
+  - {fileID: 727361306}
   - {fileID: 1652721786}
   - {fileID: 1837958213}
-  - {fileID: 727361306}
   soundImage:
   - {fileID: 1495942994}
   - {fileID: 1910694715}
@@ -1070,7 +1069,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d929f49315842244897f34577b8a7cc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2375,7 +2374,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 386683669}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: OnSound
+        m_MethodName: OnClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2522,7 +2521,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 386683669}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: OnSound
+        m_MethodName: OnClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2598,7 +2597,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9092d8cf9afcbc3459f55b89cbfd7771, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2846,21 +2845,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402344158}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: OnToggleChanged
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 386683669}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: OnSound
+        m_MethodName: OnClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2949,7 +2936,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4d929f49315842244897f34577b8a7cc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3294,7 +3281,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 386683669}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: OnSound
+        m_MethodName: OnClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

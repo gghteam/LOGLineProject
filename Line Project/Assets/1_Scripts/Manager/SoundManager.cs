@@ -24,7 +24,6 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        soundButton[2].onClick.AddListener(() => audioSource[3].Play());
     }
     private void Start()
     {
@@ -48,9 +47,10 @@ public class SoundManager : MonoBehaviour
                 break;
             case "SFX":
                 audioSource[1].volume = audioSource[1].volume == 0 ? audioSource[1].volume = 1 : audioSource[1].volume = 0;
-                if (SceneManager.GetActiveScene().name != "MainStartScene")
+                if (SceneManager.GetActiveScene().name == "StartScene")
                 {
                 audioSource[2].volume = audioSource[2].volume == 0 ? audioSource[2].volume = 1 : audioSource[2].volume = 0;
+                audioSource[3].volume = audioSource[3].volume == 0 ? audioSource[3].volume = 1 : audioSource[3].volume = 0;
                 }
                 if (audioSource[1].volume == 0)
                     PlayerPrefs.SetInt("SFX", 0);
@@ -68,20 +68,20 @@ public class SoundManager : MonoBehaviour
     }
     public void GetVolume()
     {
-                audioSource[0].volume = PlayerPrefs.GetInt("BGM",1);
-                audioSource[1].volume = PlayerPrefs.GetInt("SFX",1);
-        if (SceneManager.GetActiveScene().name != "MainStartScene")
+        audioSource[0].volume = PlayerPrefs.GetInt("BGM", 1);
+        audioSource[1].volume = PlayerPrefs.GetInt("SFX", 1);
+        if (SceneManager.GetActiveScene().name == "StartScene")
         {
-                audioSource[2].volume = PlayerPrefs.GetInt("SFX",1);
+            audioSource[2].volume = PlayerPrefs.GetInt("SFX", 1);
+            audioSource[3].volume = PlayerPrefs.GetInt("SFX", 1);
         }
     }
-    public void SoundOn(int source, int clip)
+    public void SoundOn(int source)
     {
-        audioSource[source].clip = audioClip[clip];
         audioSource[source].Play();
     }
 
-    public void OnSound()
+    public void OnClickSound()
     {
         audioSource[1].Play();
     }

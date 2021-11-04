@@ -12,7 +12,7 @@ public class UiManager : MonoBehaviour
     private RectTransform settingPanel;
     [SerializeField]
     private Text myScore = null;
-    
+
 
     [SerializeField]
     private Text time = null;
@@ -42,21 +42,25 @@ public class UiManager : MonoBehaviour
 
     public void OnToggleChanged(bool isOn)
     {
-        Debug.Log("ggg");
-        if(isOn == false) { 
-            if(SceneManager.GetActiveScene().name == "MainStartScene")
+        if (isOn == false)
+        {
+            if (SceneManager.GetActiveScene().name == "StartScene")
             {
                 Debug.Log("³²¼ÒÁ¤");
-                Time.timeScale = 1;
+                StartCoroutine(Timer());
             }
             else
-            StartCoroutine(Timer()); }
+            {
+                Time.timeScale = 1;
+            }
+        }
         settingPanel.DOAnchorPosX(isOn ? 0f : 1400f, 0.2f).SetEase(Ease.InCirc).OnComplete(() =>
         {
-            if (isOn) { 
-                Time.timeScale = 0; }
+            if (isOn)
+            {
+                Time.timeScale = 0;
+            }
         });
-        Debug.Log("ch");
     }
 
     public void UpdateUI()
@@ -66,9 +70,9 @@ public class UiManager : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        for(int i = 3; i > 0; i--)
+        for (int i = 3; i > 0; i--)
         {
-            time.text = string.Format("{0}",i);
+            time.text = string.Format("{0}", i);
             yield return new WaitForSecondsRealtime(1f);
         }
         time.text = "";

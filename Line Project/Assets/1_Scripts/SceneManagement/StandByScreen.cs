@@ -7,10 +7,15 @@ using UnityEngine.UI;
 public class StandByScreen : MonoBehaviour
 {
     [SerializeField]
-    Button button;
+    Button[] button;
     
     private void Awake()
     {
-        button.onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
+        button[0].onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
+        button[1].onClick.AddListener(() => Quit());
+    }
+    private void Quit()
+    {
+        Application.Quit();
     }
 }
