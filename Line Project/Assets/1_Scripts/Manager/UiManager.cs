@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class UiManager : MonoBehaviour
     private RectTransform settingPanel;
     [SerializeField]
     private Text myScore = null;
+    
 
     [SerializeField]
     private Text time = null;
 
     public bool linestop = false;
+
+
 
     //public void OpenUI(GameObject ui)
     //{
@@ -38,7 +42,15 @@ public class UiManager : MonoBehaviour
 
     public void OnToggleChanged(bool isOn)
     {
-        if(isOn == false) { StartCoroutine(Timer()); }
+        Debug.Log("ggg");
+        if(isOn == false) { 
+            if(SceneManager.GetActiveScene().name == "MainStartScene")
+            {
+                Debug.Log("³²¼ÒÁ¤");
+                Time.timeScale = 1;
+            }
+            else
+            StartCoroutine(Timer()); }
         settingPanel.DOAnchorPosX(isOn ? 0f : 1400f, 0.2f).SetEase(Ease.InCirc).OnComplete(() =>
         {
             if (isOn) { 

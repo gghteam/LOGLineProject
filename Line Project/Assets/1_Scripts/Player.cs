@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         isleft = false;
         GetComponent<SpriteRenderer>().flipX = false;
         tiger.GetComponent<SpriteRenderer>().flipX = false;
-        SoundManager.Instance.OnSound(2, 1);
+        SoundManager.Instance.SoundOn(2, 1);
         playerAnimator.SetBool("isMove", true);
         tiger.GetComponent<Animator>().SetBool("isMove", true);
         Invoke("MoveAni", 0.3f);
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         isleft = true;
         GetComponent<SpriteRenderer>().flipX = true;
         tiger.GetComponent<SpriteRenderer>().flipX = true;
-        SoundManager.Instance.OnSound(2, 1);
+        SoundManager.Instance.SoundOn(2, 1);
         playerAnimator.SetBool("isMove", true);
         tiger.GetComponent<Animator>().SetBool("isMove", true);
         Invoke("MoveAni", 0.3f);

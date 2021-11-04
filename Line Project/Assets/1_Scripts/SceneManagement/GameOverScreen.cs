@@ -14,14 +14,28 @@ public class GameOverScreen : MonoBehaviour
     private Text scoreText = null;
     [SerializeField]
     private Text bestText = null;
+    private AudioSource audio;
     private void Awake()
     {
         CheckBest();
         scoreText.text = string.Format("{0}", PlayerPrefs.GetInt("SCORE", 0));
         startButton.onClick.AddListener(() => SceneManager.LoadScene("MainStartScene"));
         retryButton.onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
+        audio = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        CheckSound();
+    }
+    void CheckSound()
+    {
+        if(PlayerPrefs.GetInt("BGM")== 0)
+        {
+            audio.volume = 0;
+        }
+
+    }
     private void CheckBest()
     {
         if(PlayerPrefs.GetInt("SCORE", 0) > PlayerPrefs.GetInt("BEST", 0))

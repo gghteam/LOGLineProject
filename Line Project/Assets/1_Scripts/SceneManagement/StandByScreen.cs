@@ -8,6 +8,7 @@ public class StandByScreen : MonoBehaviour
 {
     [SerializeField]
     Button button;
+    
     private void Awake()
     {
         button.onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
