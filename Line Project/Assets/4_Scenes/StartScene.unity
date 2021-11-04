@@ -764,8 +764,6 @@ MonoBehaviour:
   spriteImage:
   - {fileID: 21300000, guid: e1c6d64b83a13ad4ca2beaaf1cf0998f, type: 3}
   - {fileID: 21300000, guid: 727b26cf3fa27e441bdbafb9363b648b, type: 3}
-  isBGM: 1
-  isSFX: 1
 --- !u!4 &386683670
 Transform:
   m_ObjectHideFlags: 0
@@ -932,7 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2945,9 +2943,9 @@ MonoBehaviour:
   headAnimator: {fileID: 781873886}
   tiger: {fileID: 1416803238}
   playerPosition:
-  - {x: -1.5, y: -7, z: -1}
-  - {x: 0, y: -7, z: -1}
-  - {x: 1.5, y: -7, z: -1}
+  - {x: -1.5, y: -8.5, z: -1}
+  - {x: 0, y: -8.5, z: -1}
+  - {x: 1.5, y: -8.5, z: -1}
   playerPositionIndex: 1
 --- !u!212 &1897812953
 SpriteRenderer:
@@ -3008,7 +3006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897812951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: -1}
+  m_LocalPosition: {x: 0, y: -8.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 781873884}

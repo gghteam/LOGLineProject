@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Hi");
         GameObject cake = PoolManager.Instance.GetPooledObject(1);
         cake.SetActive(true);
-        int line = Random.Range(0, 2);
+        int line = Random.Range(0, 3);
         switch (line)
         {
             case 0:
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject stone = PoolManager.Instance.GetPooledObject(2);
         stone.SetActive(true);
-        int line = Random.Range(0, 2);
+        int line = Random.Range(0, 3);
         switch (line)
         {
             case 0:

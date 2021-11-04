@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("isDie", true);
         transform.GetChild(0).gameObject.SetActive(false);
         transform.DOMoveY(-19, 2f);
-        GameManager.Instance.Invoke("Fun", 2f);
+        GameManager.Instance.Invoke("Fun", 1f);
     }
     public void OnclickRight()
     {

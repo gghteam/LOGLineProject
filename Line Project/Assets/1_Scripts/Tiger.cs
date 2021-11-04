@@ -7,7 +7,7 @@ public class Tiger : MonoBehaviour
 {
     public void Up()
     {
-        transform.DOMoveY(-9.5f, 0.5f);
+        transform.DOMoveY(-10f, 0.5f);
     }
 
     public void Down()
@@ -17,6 +17,6 @@ public class Tiger : MonoBehaviour
 
     public void End()
     {
-        transform.DOMove(new Vector3(0, -7, -1), 0.5f);
+        transform.DOMoveY(-8, 0.5f);
     }
 }
