@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        soundButton[2].onClick.AddListener(() => audioSource[3].Play());
     }
     private void Start()
     {
