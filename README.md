@@ -16,3 +16,6 @@
 
 ### 3. 송편을 먹어라!!
 ![(포)송편 먹기](https://user-images.githubusercontent.com/77655332/224473806-e40848c1-1c6e-44e9-b430-129d04bc19f3.gif)
+
+#### 다운로드
+https://drive.google.com/file/d/11HjlxYhYJqwVYNzn1BoTwvBphiwasJtB/view?usp=sharing
