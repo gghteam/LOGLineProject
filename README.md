@@ -3,6 +3,9 @@
 ## 게임 컨셉
 전래 동화 "해와 달이 된 오누이"의 여동생이 되어 호랑이를 피해 최대한 높게 올라가서 해와 달이 되는게 목적!!
 
+## 플레이 영상
+[![Video Label](http://img.youtube.com/vi/ELa5dXsXFh0/0.jpg)](https://youtu.be/ELa5dXsXFh0?t=0s)
+
 ## 간단한 게임 방식
 
 ### 1. 줄을 오른다
